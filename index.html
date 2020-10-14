@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi step form using Bootstrap 4 & jQuery</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 bg-light p-4 rounded">
+                <h5 class="text-center text-light bg-success mb-2 p-2 rounded lead" id="result">Hello world</h5>
+                <div class="progress mb-3" style="height: 40px;">
+                    <div class="progress-bar bg-danger rounded" role="progressbar" role="progressbar" id="progressBar" style="width: 20%;">
+                        <b class="lead" id="progressText">Step - 1</b>
+                    </div>
+                </div>
+                <form method="post" id="form-data">
+                    <div id="first" class="fadeIn">
+                        <h4 class="text-center bg-primary p-1 rounded text-light">Personal Information</h4>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Your Username">
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="btn btn-danger" id="next-1">Next</a>
+                        </div>
+                    </div>
+                    <div id="second" class="fadeIn">
+                        <h4 class="text-center bg-primary p-1 rounded text-light">Contact Information</h4>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="btn btn-danger" id="prev-1">Previous</a>
+                            <a href="#" class="btn btn-danger" id="next-2">Next</a>
+                        </div>
+                    </div>
+                    <div id="third" class="fadeIn">
+                        <h4 class="text-center bg-primary p-1 rounded text-light">Choose Password</h4>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Your Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Password</label>
+                            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Your Password">
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="btn btn-danger" id="prev-2">Previous</a>
+                            <input value="submit" class="btn btn-success" id="submit">
+                        </div>
+                    </div>
+                </form> 
+            </div>            
+        </div>
+    </div>
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('#next-1').click(function(){
+                $('#first').hide();
+                $('#second').show();
+                $('#progressBar').css('width','60%');
+                $('#progressText').html('Step 2');
+            });
+            $('#next-2').click(function(){
+                $('#first').hide();
+                $('#second').hide();
+                $('#third').show();
+                $('#progressBar').css('width','100%');
+                $('#progressText').html('Step 3');
+            });
+            $('#prev-1').click(function(){
+                $('#first').show();
+                $('#second').hide();
+                $('#third').hide();
+                $('#progressBar').css('width','20%');
+                $('#progressText').html('Step 1');
+            });
+            $('#prev-2').click(function(){
+                $('#first').hide();
+                $('#second').show();
+                $('#third').hide();
+                $('#progressBar').css('width','60%');
+                $('#progressText').html('Step 2');
+            });
+        });
+        
+    </script>
+</body>
+</html>
